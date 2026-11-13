@@ -1,0 +1,7 @@
+[package]
+name = "env-rdr-rs"
+version = "0.1.0"
+edition = "2024"
+description = "Native implementation to read values from the environment or a .env file, no dependencies"
+
+[dependencies]
