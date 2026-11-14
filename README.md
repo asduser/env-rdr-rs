@@ -1,9 +1,11 @@
 # env-rdr-rs
 
+Native implementation w/o any packages. 🔥
+
 Loads values from the process environment,
 falling back to a `.env` file in the current directory. No dependencies.
 
-## Run
+## Run 💻
 
 ```bash
     cp .env.example .env    # then edit it
@@ -17,13 +19,13 @@ Environment variables override the file:
     MY_URL=other.example.com cargo run
 ```
 
-## Test
+## Test ☕
 
 ```bash
     cargo test
 ```
 
-## .env format
+## .env format 📄
 
 - `KEY=value`, one per line; `export KEY=value` also works
 - Blank lines and lines starting with `#` are ignored
