@@ -12,19 +12,23 @@ impl Creds {
     pub fn is_empty(&self) -> bool {
         self.values.is_empty()
     }
+
+    pub fn len(&self) -> usize {
+        self.values.len()
+    }
+
+    /// All pairs in key order, with secret values replaced by `***`.
+    pub fn iter_redacted(&self) -> impl Iterator<Item = (&str, &str)> {
+        self.values.iter().map(|(k, v)| {
+            let v = if is_secret(k) { "***" } else { v.as_str() };
+            (k.as_str(), v)
+        })
+    }
 }
 
 impl fmt::Debug for Creds {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        let mut m = f.debug_map();
-        for (k, v) in &self.values {
-            if is_secret(k) {
-                m.entry(k, &"***");
-            } else {
-                m.entry(k, v);
-            }
-        }
-        m.finish()
+        f.debug_map().entries(self.iter_redacted()).finish()
     }
 }
 
