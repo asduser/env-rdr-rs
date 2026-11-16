@@ -24,7 +24,7 @@ fn main() -> ExitCode {
     };
 
     if c.is_empty() {
-        eprintln!("error: values store is empty");
+        eprintln!("error: values list is empty");
         return ExitCode::FAILURE;
     }
 
