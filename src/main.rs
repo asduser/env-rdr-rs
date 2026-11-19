@@ -36,9 +36,5 @@ fn main() -> ExitCode {
         return ExitCode::FAILURE;
     }
 
-    match c.get("APP_GATEWAY") {
-        Some(gw) => println!("Gateway: {gw}"),
-        None => println!("APP_GATEWAY not set"),
-    }
     ExitCode::SUCCESS
 }

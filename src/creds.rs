@@ -99,4 +99,14 @@ mod tests {
         let s = format!("{c:?}");
         assert!(s.contains("bob") && !s.contains("hunter2"));
     }
+
+    #[test]
+    fn get_returns_value_or_none() {
+        let c = Creds {
+            values: parse("APP_USER=bob\nAPP_PASS=hunter2\n"),
+        };
+        assert_eq!(c.get("APP_USER"), Some("bob"));
+        assert_eq!(c.get("APP_PASS"), Some("hunter2"));
+        assert_eq!(c.get("APP_MISSING"), None);
+    }
 }
